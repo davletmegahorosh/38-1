@@ -5,3 +5,4 @@ handlers/__pycache__/
 .env
 db.sqlite3
 media
+test.py
