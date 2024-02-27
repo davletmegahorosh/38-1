@@ -1,12 +1,14 @@
 import requests
 
-# Where USD is the base currency you want to use
-url = 'https://v6.exchangerate-api.com/v6/90bdd22e4a5ae95e15aaf300/latest/USD'
+url = "https://currency-conversion-and-exchange-rates.p.rapidapi.com/convert"
 
-# Making our request
-response = requests.get(url)
-data = response.json()
+querystring = {"from":"USD","to":"EUR","amount":"750"}
 
-# Your JSON object
-print(data)
-print(data['conversion_rates'])
+headers = {
+	"X-RapidAPI-Key": "8f58b72c8bmshfd6ad24797b63ccp1efd77jsnfe70d5b7f4c7",
+	"X-RapidAPI-Host": "currency-conversion-and-exchange-rates.p.rapidapi.com"
+}
+
+response = requests.get(url, headers=headers, params=querystring)
+
+print(response.json())
