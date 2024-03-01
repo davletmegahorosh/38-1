@@ -17,7 +17,6 @@ class NewsScraper:
     TITLE_XPATH = '//div[@class="col-sm-8 col-lg-9 pull-left card"]/h3/text()'
     DESCRIPTION_XPATH = '//p[@class="remove-outline"]/text()'
 
-
     def scrape_data(self):
         response = requests.request(method="GET", url=self.URL, headers=self.HEADERS)
         # print(response.text)
