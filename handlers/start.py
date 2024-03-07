@@ -44,16 +44,18 @@ async def start_button(message: types.Message):
             )
         except sqlite3.IntegrityError:
             pass
+    await message.answer(const.START_MENU_TEXT.format(
+                user=message.from_user.first_name))
 
-    with open(MEDIA_DESTINATION + "bot_ani.gif", 'rb') as ani:
-        await bot.send_animation(
-            chat_id=message.from_user.id,
-            animation=ani,
-            caption=const.START_MENU_TEXT.format(
-                user=message.from_user.first_name
-            ),
-            reply_markup=await start_inline_buttons.start_keyboard()
-        )
+    # with open(MEDIA_DESTINATION + "bot_ani.gif", 'rb') as ani:
+    #     await bot.send_animation(
+    #         chat_id=message.from_user.id,
+    #         animation=ani,
+    #         caption=const.START_MENU_TEXT.format(
+    #             user=message.from_user.first_name
+    #         ),
+    #         reply_markup=await start_inline_buttons.start_keyboard()
+    #     )
 
 
 # async def latest_news_call(call: types.CallbackQuery):

@@ -16,6 +16,7 @@ class Database:
         self.connection.execute(sql_queries.CREATE_PROFILE_TABLE_QUERY)
         self.connection.execute(sql_queries.CREATE_LIKE_TABLE_QUERY)
         self.connection.execute(sql_queries.CREATE_REFERENCE_TABLE_QUERY)
+        self.connection.execute(sql_queries.CREATE_FILMS_TABLE_QUERY)
 
         try:
             self.connection.execute(sql_queries.ALTER_USER_TABLE)
@@ -161,3 +162,22 @@ class Database:
             (owner,)
         )
         self.connection.commit()
+
+    def sql_insert_film(self, link, image, title, desc):
+        self.cursor.execute(
+            sql_queries.INSERT_FILMS_QUERY,
+            (None, link, image, title, desc)
+        )
+        self.connection.commit()
+
+    def sql_select_films(self):
+        self.cursor.row_factory = lambda cursor, row: {
+            "id": row[0],
+            "link": row[1],
+            "photo": row[2],
+            "title": row[3],
+            "decs": row[3],
+        }
+        return self.cursor.execute(
+            sql_queries.SELECT_films
+        ).fetchone()

@@ -5,14 +5,14 @@ from aiogram import types, Dispatcher
 import database.bot_db
 from config import bot, GROUP_ID
 from keyboards import questionnaire_inline_buttons
-from profanity_check import predict, predict_prob
+# from profanity_check import predict, predict_prob
 
 
 async def chat_messages(message: types.Message):
     db = database.bot_db.Database()
     if message.chat.id == int(GROUP_ID):
-        ban_words_prob = predict_prob([message.text])
-        if ban_words_prob > 0.8:
+        # ban_words_prob = predict_prob([message.text])
+        # if ban_words_prob > 0.8:
             potential = db.sql_select_ban_user(
                 tg_id=message.from_user.id
             )

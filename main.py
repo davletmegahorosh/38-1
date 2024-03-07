@@ -7,6 +7,7 @@ from handlers import (
     registration,
     profile,
     reference,
+    scraper
 )
 from database import bot_db
 
@@ -20,6 +21,7 @@ start.register_start_handlers(dp=dp)
 questionnaire.register_questionnaire_handlers(dp=dp)
 registration.register_registration_handlers(dp=dp)
 profile.register_profile_handler(dp=dp)
+scraper.register_scraper_handlers(dp=dp)
 reference.register_reference_handlers(dp=dp)
 group_actions.register_group_actions_handlers(dp=dp)
 
